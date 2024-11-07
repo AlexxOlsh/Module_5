@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 from user.github_oauth_signup import GitHubOAuth2SignUpView
 from user.github_oauth_signup_callback import GitHubOAuth2SignUpCallbackView
 from user.github_oauth_login import GitHubOAuth2LoginView
 from user.github_oauth_login_callback import GitHubOAuth2LoginCallbackView
+from .yasg import urlpatterns as doc_urls
 
 
 urlpatterns = [
@@ -25,3 +27,5 @@ urlpatterns = [
         name="github_login_callback",
     ),
 ]
+
+urlpatterns += doc_urls

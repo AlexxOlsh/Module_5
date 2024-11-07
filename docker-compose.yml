@@ -35,8 +35,24 @@ services:
     networks:
       - app_network
 
+  backup:
+    image: offen/docker-volume-backup:v2
+    volumes:
+      - pg_data:/backup/module5-backup:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./backups:/archive
+    networks:
+      - app_network
+    depends_on:
+      - db
+    environment:
+      BACKUP_FILENAME: backup-%Y-%m-%dT%H-%M-%S.tar.gz
+      BACKUP_LATEST_SYMLINK: backup-latest.tar.gz
+      BACKUP_CRON_EXPRESSION: "*/60 * * * *"
+
 
 volumes:
   pg_data:
+
 networks:
   app_network:

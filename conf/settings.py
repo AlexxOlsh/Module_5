@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "sslserver",
     'corsheaders',
     'djoser',
+    'drf_yasg',
     'api',
     'user',
 ]
@@ -135,8 +136,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
@@ -147,7 +148,7 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '5/hour',
         'user': '100/day'
-    }
+    },
 }
 
 SIMPLE_JWT = {

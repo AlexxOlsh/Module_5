@@ -9,3 +9,4 @@ django-sslserver~=0.22
 requests-oauthlib~=2.0.0
 environ~=1.0
 gunicorn~=23.0.0
+drf-yasg~=1.21.8
