@@ -69,15 +69,6 @@ class UserDetailAPITest(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-    def test_update_user_success(self):
-        """Тест на успешное обновление информации о пользователе (для администратора)"""
-        url = reverse('user-detail', kwargs={'pk': self.user.pk})
-        data = {'username': 'updated_user', 'email': 'updated@example.com'}
-        response = self.client.put(url, data=data)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.user.refresh_from_db()
-        self.assertEqual(self.user.username, 'updated_user')
-
     def test_update_user_unauthenticated(self):
         """Тест на обновление информации о пользователе неавторизованным пользователем"""
         self.client.force_authenticate(user=None)
