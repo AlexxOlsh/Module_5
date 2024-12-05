@@ -6,7 +6,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    container_name: module_5_db
+    container_name: module5_db
     environment:
       POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: '7KZf3ZFE*rR1'
@@ -21,7 +21,7 @@ services:
 
   web:
     build: .
-    container_name: module_5
+    container_name: module5
     command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
